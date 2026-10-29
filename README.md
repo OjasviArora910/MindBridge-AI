@@ -112,42 +112,8 @@ frontend/ (React, TypeScript, Vite, Tailwind, Recharts)  ──/api──▶  ba
 
 **This needs professional review before release.** The phrase lists and response wording are an engineering starting point written without clinical input. They will miss phrasing (including Hindi and Hinglish, which are not covered) and can both over- and under-trigger. Have qualified mental-health professionals review the scenarios, wording and follow-up flow, and test with real-world phrasing.
 
-## Privacy model
 
-- No diagnoses, inferred conditions or hidden profiles are stored. Personalisation reads the user's own onboarding answers and the last 7 days of mood ratings at request time.
-- Chat history is **off by default**. Personalisation can be turned off. Sharing with an external AI provider is **off by default** and required before any real provider is called.
-- Users can see exactly what personalisation can use, delete saved answers, delete conversations, download everything (JSON), and delete the account permanently.
-- Nothing is used to train models. No analytics are included.
-- Passwords are PBKDF2-hashed; every protected route requires a token and checks ownership.
-
-**Prototype limits:** auth is a small hand-rolled token scheme, with no email verification, password reset, token revocation or persistent rate limiting. Sensitive text is not encrypted at the application level (rely on disk/DB encryption and TLS in a real deployment). Do not present this build as production-secure.
-
-## Support resources: must be verified before release
-
-Region is chosen by the user and is never guessed. Entries live in `backend/app/ai/resources.json` with a `verified` flag; the UI warns on unverified entries.
-
-| Region | Resource | Status |
-|---|---|---|
-| India | 112 national emergency number | Confirmed on the [MHA ERSS page](https://www.mha.gov.in/en/commoncontent/emergency-response-support-system-erss), 28 Oct 2026 |
-| India | Tele-MANAS 14416 | **Unverified.** The number appeared on a government-portal page, but hours, languages and the official source were not confirmed. Check before release |
-| US | 988 Suicide & Crisis Lifeline (call/text, 24/7) | Confirmed on the [SAMHSA fact sheet](https://www.samhsa.gov/sites/default/files/988-factsheet.pdf), 28 Oct 2026 |
-| Other | "Contact your local emergency services" | Generic by design (no number) |
-
-The resource list is tiny. A real launch needs a vetted, regularly re-checked directory.
-
-## Design and accessibility
-
-Soft blue / sage / neutral palette from the brief. Blue and sage are decorative only because they fail as text. Contrast ratios (WCAG AA needs 4.5:1), enforced by a test that reads the real tokens:
-
-| Pair | Ratio |
-|---|---|
-| Main text `#293843` on white / paper / pale blue / mint | 12.1 / 11.3 / 10.9 / 10.6 |
-| Secondary text `#566872` on white / paper / pale blue / mint | 5.8 / 5.4 / 5.2 / 5.1 |
-| White on deep blue `#35566F` (buttons, selected chips) | 7.7 |
-| Safety notice text `#7A4B2A` on `#FBF1E6` | 6.6 |
-
-The brief's suggested secondary text `#687780` measured 4.06:1 on the mint background, so it was darkened. Red is not used; a single warm brown is reserved for support/safety notices. Other measures: skip link, visible focus rings, 44px+ touch targets, labelled controls, live regions, text alternatives for charts, reduced-motion support.
-
+#
 ## What is mocked or unfinished
 
 - **Mock LLM:** default replies come from a rule-based stand-in, labelled in the UI. Real-model quality and safety have **not** been evaluated; the real provider path is implemented but was only exercised with stubs, never against a live service.
@@ -159,5 +125,3 @@ The brief's suggested secondary text `#687780` measured 4.06:1 on the mint backg
 - **Auth, rate limiting, encryption at rest, backups, retention schedule:** prototype level (see Privacy).
 - **Mood "trends" are simple** (daily rating line, sleep bars, count-based sentences) by design.
 - **Unrun:** Playwright e2e, Docker build, real-browser accessibility/contrast scan, device testing.
-#   M i n d B r i d g e - A I  
- 

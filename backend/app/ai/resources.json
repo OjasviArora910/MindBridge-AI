@@ -1,0 +1,56 @@
+{
+  "_comment": "Crisis and emergency resources. Every entry must be verified against an official source by a person before a real release. `verified` records whether that has happened; do not flip it without checking.",
+  "regions": {
+    "IN": {
+      "label": "India",
+      "items": [
+        {
+          "name": "National emergency number (ERSS)",
+          "contact": "112",
+          "kind": "emergency",
+          "note": "For immediate danger.",
+          "source": "https://www.mha.gov.in/en/commoncontent/emergency-response-support-system-erss",
+          "verified": true,
+          "verified_on": "2026-10-28"
+        },
+        {
+          "name": "Tele-MANAS (government mental-health helpline)",
+          "contact": "14416",
+          "kind": "mental_health",
+          "note": "Hours and languages not confirmed here. Please check before relying on this.",
+          "source": "https://en.vikaspedia.in/viewcontent/health/mental-health/tele-manas",
+          "verified": false,
+          "verified_on": null
+        }
+      ]
+    },
+    "US": {
+      "label": "United States",
+      "items": [
+        {
+          "name": "988 Suicide & Crisis Lifeline",
+          "contact": "Call or text 988",
+          "kind": "crisis",
+          "note": "Available 24/7. Chat at 988lifeline.org.",
+          "source": "https://www.samhsa.gov/sites/default/files/988-factsheet.pdf",
+          "verified": true,
+          "verified_on": "2026-10-28"
+        }
+      ]
+    },
+    "OTHER": {
+      "label": "Another country",
+      "items": [
+        {
+          "name": "Your local emergency number",
+          "contact": "Contact your local emergency services",
+          "kind": "emergency",
+          "note": "If you are in immediate danger, contact local emergency services or go to the nearest emergency department.",
+          "source": null,
+          "verified": true,
+          "verified_on": "2026-10-28"
+        }
+      ]
+    }
+  }
+}

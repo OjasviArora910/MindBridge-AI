@@ -1,0 +1,49 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+/* Design tokens. Palette from the brief; text/action colours chosen for contrast (checked in README). */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-blue: #8fb8d8;        /* decorative accents only (not text) */
+  --color-deep: #35566f;        /* strong actions + headings; white on this = 7.6:1 */
+  --color-sage: #a8bfa8;        /* decorative accents only */
+  --color-mint: #eaf2ec;
+  --color-paper: #f8f7f2;
+  --color-mist: #edf4f8;
+  --color-ink: #293843;         /* main text */
+  --color-muted: #566872;       /* secondary text; darkened from #687780 so it passes 4.5:1 on all surfaces */
+  --color-line: #dce5e5;
+  --color-sand: #d8cdbf;
+  --color-care: #7a4b2a;        /* the one warm tone, reserved for safety notices */
+  --color-care-bg: #fbf1e6;
+
+  --radius-card: 1.25rem;
+  --shadow-soft: 0 1px 2px rgb(41 56 67 / 0.05), 0 6px 20px rgb(41 56 67 / 0.05);
+}
+
+html { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); }
+body { margin: 0; line-height: 1.6; font-size: 1rem; overflow-x: hidden; }
+* { box-sizing: border-box; }
+
+:focus-visible { outline: 3px solid var(--color-deep); outline-offset: 2px; border-radius: 6px; }
+
+/* Calm motion only; honour the user's reduced-motion setting everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+@keyframes breathe-in { from { transform: scale(0.62); } to { transform: scale(1); } }
+@keyframes breathe-out { from { transform: scale(1); } to { transform: scale(0.62); } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.fade-up { animation: fade-up 0.35s ease both; }
+
+/* Printing a report: show only the approved text */
+.print-only { display: none; }
+@media print {
+  body * { visibility: hidden; }
+  #print-area, #print-area * { visibility: visible; }
+  #print-area { display: block; position: absolute; left: 0; top: 0; width: 100%; font-size: 12pt; color: #000; }
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
