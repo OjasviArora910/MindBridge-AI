@@ -113,15 +113,3 @@ frontend/ (React, TypeScript, Vite, Tailwind, Recharts)  ──/api──▶  ba
 **This needs professional review before release.** The phrase lists and response wording are an engineering starting point written without clinical input. They will miss phrasing (including Hindi and Hinglish, which are not covered) and can both over- and under-trigger. Have qualified mental-health professionals review the scenarios, wording and follow-up flow, and test with real-world phrasing.
 
 
-#
-## What is mocked or unfinished
-
-- **Mock LLM:** default replies come from a rule-based stand-in, labelled in the UI. Real-model quality and safety have **not** been evaluated; the real provider path is implemented but was only exercised with stubs, never against a live service.
-- **Safety rules and wording** need clinical review (see above). English only.
-- **Hindi:** the architecture is ready (language setting, shared string file) but only English ships.
-- **Self-assessments:** interface only; no instruments.
-- **RAG over reviewed resources:** not implemented. Retrieval citations and the abstention path are not built.
-- **Reports:** text download and browser print-to-PDF only; no server-side PDF.
-- **Auth, rate limiting, encryption at rest, backups, retention schedule:** prototype level (see Privacy).
-- **Mood "trends" are simple** (daily rating line, sleep bars, count-based sentences) by design.
-- **Unrun:** Playwright e2e, Docker build, real-browser accessibility/contrast scan, device testing.
